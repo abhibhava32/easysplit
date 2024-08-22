@@ -1,0 +1,518 @@
+/* Dark Theme */
+body.dark-theme {
+    background-color: #333;
+    color: #f4f4f9;
+}
+
+.dark-theme .card,
+.dark-theme .modal,
+.dark-theme .collection,
+.dark-theme .collection .collection-item {
+    background-color: #444;
+    border-color: #555;
+}
+
+.dark-theme .sidenav{
+    background-color: #333;
+    color:#f1f1f1;
+}
+
+.dark-theme #openModalBtn {
+    color:#f1f1f1;
+}
+/*
+.dark-theme .responsive-chart{
+    background-color:#f6f6f6f6;
+} */
+
+.dark-theme .btn,
+.dark-theme .btn-large {
+    background-color: #555;
+}
+.dark-theme .sidenav a{
+    color:#f4f4f9 !important;
+}
+.dark-theme .sidenav a i{
+    color:#f4f4f9 !important;
+}
+
+/* .dark-theme .btn:hover,
+.dark-theme .btn-large:hover {
+    background-color: #2bbbad;
+} */
+
+.dark-theme input:not([type]),
+.dark-theme input[type=text]:not(.browser-default),
+.dark-theme input[type=number]:not(.browser-default),
+.dark-theme textarea.materialize-textarea {
+    border-bottom: 1px solid #666;
+    color: #f4f4f9;
+}
+.dark-theme input[type="text"]:not(.browser-default):disabled {
+    color:#9e9e9e;
+}
+
+.dark-theme input[type="text"]:not(.browser-default):disabled + label{
+    color: #9e9e9e !important;
+}
+
+.dark-theme input:not([type]):focus:not([readonly]),
+.dark-theme input[type=text]:not(.browser-default):focus:not([readonly]),
+.dark-theme input[type=number]:not(.browser-default):focus:not([readonly]),
+.dark-theme textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #26a69a;
+    box-shadow: 0 1px 0 0 #26a69a;
+}
+
+.dark-theme input:not([type]):focus:not([readonly])+label,
+.dark-theme input[type=text]:not(.browser-default):focus:not([readonly])+label,
+.dark-theme input[type=number]:not(.browser-default):focus:not([readonly])+label,
+.dark-theme textarea.materialize-textarea:focus:not([readonly])+label {
+    color: #26a69a;
+}
+
+.dark-theme .member-checkboxes [type="checkbox"]:checked+span:not(.lever)::before {
+    border-right: 2px solid #4db6ac;
+    border-bottom: 2px solid #4db6ac;
+}
+
+.dark-theme table.highlight > tbody > tr:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.dark-theme .bottom-nav {
+    background-color: #333;
+}
+
+.dark-theme .select-wrapper input.select-dropdown {
+    color: #f4f4f9;
+}
+
+.dark-theme .dropdown-content li>a,
+.dark-theme .dropdown-content li>span {
+    background-color: #616161;
+    color: #f4f4f9;
+}
+
+.dark-theme .select-dropdown li.disabled,
+.dark-theme .select-dropdown li.disabled>span,
+.dark-theme .select-dropdown li.optgroup {
+    color: #999;
+}
+
+.dark-theme table.striped > tbody > tr:nth-child(odd) {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.dark-theme .tabs-container {
+    background-color: #555;
+}
+
+.dark-theme .tabs .tab a {
+    background-color: inherit;
+    color: #f4f4f9;
+}
+
+.dark-theme .tabs .tab a:hover,
+.dark-theme .tabs .tab a.active {
+    background-color: inherit;
+    color: #f4f4f9;
+}
+
+.dark-theme .tabs .indicator {
+    background-color: #f4f4f9;
+}
+
+.dark-theme .member-bubble {
+    background-color: #555;
+}
+
+.dark-theme .member-bubble.inactive {
+    background-color: #999;
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+    background: #666;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* dark theme ends */
+
+/* Base styles */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.user-view{
+min-height: 150px;
+}
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 150px;
+}
+
+
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 300;
+}
+
+/* Buttons */
+.btn, .btn-large {
+    /* margin: 5px;
+    margin-top: 10px; */
+    height: 50px;
+}
+
+.brand_logo{
+    width: 100px !important;
+    height: auto !important;
+}
+/* Forms */
+/* input, select, textarea, button {
+    margin-bottom: 16px !important;
+}
+input[type="text"], input[type="number"], input[type="email"], textarea {
+    margin-bottom: 20px !important;
+}
+select {
+    margin-bottom: 20px !important;
+} */
+.input-field input[type=text]:focus + label,
+.input-field input[type=number]:focus + label {
+    margin-top: 10px;
+    color: #26a69a;
+}
+
+.input-field input[type=text]:focus,
+.input-field input[type=number]:focus {
+    border-bottom: 1px solid #26a69a;
+    box-shadow: 0 1px 0 0 #26a69a;
+}
+
+/* Member bubbles */
+.member-bubbles {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+header {
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.background{
+    align-items: center;
+    justify-content: center;
+}
+
+
+.user-view img{
+    width: 100%;
+    height: auto;
+}
+.sidenav{
+    z-index:1001;
+}
+
+.sidenav a{
+    text-align: left;
+}
+
+.sidenav li>a>i {
+    margin-right: 10px !important;
+}
+
+.member-bubble {
+    background-color: #26a69a;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.delete-member, .reactivate-member {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 16px;
+    padding: 0 5px;
+}
+
+.member-bubble.inactive {
+    background-color: #9e9e9e;
+}
+
+/* Lists */
+.collection {
+    border: none;
+}
+
+.collection .collection-item {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Tables */
+table.striped > tbody > tr:nth-child(odd) {
+    background-color: rgba(242,242,242,0.5);
+}
+
+/* Tabs  */
+.tabs-container {
+    position: -webkit-sticky; /* for Safari browsers */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure tabs are above other content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f9;
+}
+
+.tab-container-width {
+    max-width: 800px; /* Apply the max-width */
+    margin: 0 auto; /* Center the container */
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background-color: inherit;
+    align-items: center;
+}
+
+.tabs .tab {
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+
+.tabs .tab a {
+    color: #00897b;
+}
+
+#newSessionBtn {
+    margin-right: 20px;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+
+/* Hide scrollbar for WebKit browsers (e.g., Chrome, Safari) */
+.tabs::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+.tabs {
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Edge and Internet Explorer */
+.tabs {
+    -ms-overflow-style: none; /* Hide scrollbar for Edge and IE */
+}
+
+/* .tabs .tab {
+    flex: 1;
+    min-width: auto;
+} */
+
+.tabs .indicator {
+    background-color: #00897b;
+}
+
+/* Modal */
+.modal {
+    border-radius: 4px;
+}
+
+.modal .modal-footer {
+    text-align: right;
+}
+
+.member-checkboxes [type="checkbox"]+span:not(.lever) {
+    padding-left: 25px;
+    line-height: 25px;
+    margin: 10px;
+}
+
+
+.member-checkboxes [type="checkbox"].filled-in:checked+span:not(.lever):after {
+    background-color: transparent;
+}
+
+#memberCheckboxesContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.member-checkboxes [type="checkbox"]:checked+span:not(.lever)::before {
+    border-right: 2px solid #26a69a;
+    border-bottom: 2px solid #26a69a;
+}
+
+
+.responsive-chart {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 300px; /* Set a minimum height */
+    margin-bottom:20px;
+}
+
+.responsive-table {
+    overflow-x: auto;
+}
+
+table.highlight > tbody > tr:hover {
+    background-color: rgba(242,242,242,0.5);
+}
+
+/* Make action buttons in tables smaller */
+table .btn-small {
+    /* padding: 0 0.5rem; */
+    margin: 5px;
+}
+
+/* table .btn-small i {
+    font-size: 1.3rem;
+} */
+
+.table-responsive::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+
+.table-responsive  {
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+/* Hide scrollbar for Edge and Internet Explorer */
+
+.table-responsive {
+    -ms-overflow-style: none; /* Hide scrollbar for Edge and IE */
+}
+
+
+.table-responsive  {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#history-tab {
+    display: block;
+    width: 100%;
+}
+
+#historyTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#historyTable th,
+#historyTable td {
+    padding: 8px;
+    text-align: center;
+}
+
+/* bottom navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    background-color: #f4f4f9;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    align-items: center;
+    /* padding-bottom: 15px;
+    padding-top: 5px; */
+    padding: 5px 10px 15px 10px;
+}
+
+.bottom-nav .btn {
+    width: 100%;
+    max-width: 100px;
+    margin-bottom: 20px;
+    margin: 5px;
+}
+
+.bottom-nav button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.bottom-nav .btn i {
+    margin-right: 0;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+
+    .table-responsive table {
+        width: 100%;
+    }
+
+    .table-responsive th,
+    .table-responsive td {
+        white-space: nowrap;
+        min-width: 100px;
+    }
+
+
+    .container {
+        width: 95%;
+    }
+
+    .sidenav{
+        width: 75%;
+    }
+
+    .navbar h1 {
+        margin: 0;
+        font-size: 30px; /* Adjust as needed */
+    }
+
+    h2, h3 {
+        font-size: 25px;
+    }
+
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Split - Expense Splitter</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+<div class="tabs-container">
+    <div class="tab-container-width">
+        <ul><li><button class="waves-effect waves-light btn" id="newSessionBtn" title="New Group">
+            <i class="material-icons prefix">add</i>
+        </button></li></ul>
+        <ul id="tabs" class="tabs">
+            <li class="tab"><a href="#group-members" class="active">Group Members</a></li>
+            <li class="tab"><a href="#add-expense">Add Expense</a></li>
+            <li class="tab"><a href="#expenses">Expenses</a></li>
+            <li class="tab"><a href="#debts">Debts</a></li>
+            <li class="tab"><a href="#charts">Visuals</a></li>
+            <li class="tab"><a href="#history-tab">History</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    
+    <header>
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div>
+                        <img src="images/easysplit_logo.png" class="brand_logo">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row">
+                    <div class="col s12"><label for="defaultCurrency">Default Currency</label></div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">account_balance_wallet</i>
+                        <select id="defaultCurrency">
+                            <option value="INR">INR</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="JPY">JPY</option>
+                            <option value="GBP">GBP</option>
+                            <option value="AUD">AUD</option>
+                            <option value="CAD">CAD</option>
+                            <option value="CHF">CHF</option>
+                            <option value="CNY">CNY</option>
+                            <option value="SEK">SEK</option>
+                            <option value="NZD">NZD</option>
+                            <option value="RUB">RUB</option>
+                            <option value="ZAR">ZAR</option>
+                            <option value="BRL">BRL</option>
+                            <option value="SGD">SGD</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="btn waves-effect waves-light nav-button sidenav-close" id="newSessionBtnNav" title="New Group">
+                    <i class="material-icons left">refresh</i>New Group
+                </a>
+            </li>
+            <li>
+                <a class="btn waves-effect waves-light nav-button sidenav-close" data-next="history-tab">
+                    <i class="material-icons left">history</i>History
+                </a>
+            </li>
+            <li>
+                <a id="themeToggle" class="btn waves-effect waves-light nav-button sidenav-close">
+                    <i class="material-icons">brightness_medium</i>Theme
+                </a>
+            </li>
+        </ul>
+
+    </header>
+
+    <div class="row">
+        
+        <div id="group-members" class="col s12">
+            <div class="row" style="align-items: center; display: flex;">
+                <a href="#" id="openModalBtn" class="btn-flat waves-effect waves-light" title="Set/Edit Group Name">
+                    <i class="material-icons prefix">edit</i>
+                </a>
+                <h2 id="groupHeading">Group Members</h2>
+            </div>
+            <form id="addMemberForm" class="add-member-form">
+                <div class="row">
+                    <div class="input-field">
+                        <i class="material-icons prefix">person_add</i>
+                        <input type="text" id="memberNameInput" required>
+                        <label for="memberNameInput">Member Name</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit"><i class="material-icons left">add</i>Add Member</button>
+            </form>
+            <div id="memberBubbles" class="member-bubbles"></div>
+            <!-- <button class="btn waves-effect waves-light nav-button next" data-next="add-expense"><i class="material-icons left">navigate_next</i>Next</button> -->
+           
+        </div>
+        <div id="add-expense" class="col s12">
+            <div class="row">
+                <h2>Add Expense</h2>
+            </div>
+            
+            <form id="expenseForm" class="add-expense-form">
+                <input type="hidden" id="expenseIndex" value="">
+                <div class="row">
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">person</i>
+                        <select id="paidBy" required title="Select Paid by">
+                            <option value="" disabled selected>Select Paid By</option>
+                        </select>
+                        <label>Paid By</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">attach_money</i>
+                        <input type="number" step="0.01" id="expense_amount" required>
+                        <label for="expense_amount">Amount</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">description</i>
+                        <input type="text" id="expenseDescription">
+                        <label for="expenseDescription">Expense Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">payments</i>
+                        <input  class="active" type="text" id="expenseCurrency" value="INR" disabled>
+                        <label for="expenseCurrency">Currency</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">call_split</i>
+                        <select id="splitType">
+                            <option value="equal">Equal Split</option>
+                            <option value="custom">Split by Amounts</option>
+                        </select>
+                        <label>Split Type</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <button class="btn waves-effect waves-light right" type="submit" id="addExpenseBtn">
+                        <i class="material-icons left">add</i>Add Expense
+                    </button>
+                </div>
+            
+                <div class="row">
+                    <div id="memberCheckboxes" class="member-checkboxes">
+                        <p>Select Members</p>
+                        <div id="memberCheckboxesContainer"></div>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div id="amountShares"></div>
+                </div>
+            </form>
+            
+            <!-- <button class="btn waves-effect waves-light nav-button prev" data-prev="group-members"><i class="material-icons left">navigate_before</i>Previous</button>
+            <button class="btn waves-effect waves-light nav-button next" data-next="expenses"><i class="material-icons left">navigate_next</i>Next</button> -->
+            <div class="row"><h2>Expenses</h2></div>
+            <div class="table-responsive">
+                <table id="expense" class="striped">
+                    <thead>
+                    <tr>
+                        <th>Paid By</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Currency</th>
+                        <th>Members and Share</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="expenseList"></tbody>
+                </table>
+            </div>
+        </div>
+        <div id="expenses" class="col s12">
+            <div class="row"><h2>All Expenses</h2></div>
+            <div class="table-responsive">
+                <table id="expenseLFull" class="striped">
+                    <thead>
+                    <tr>
+                        <th>Paid By</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Currency</th>
+                        <th>Members and Share</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="expenseListFull"></tbody>
+                </table>
+            </div>
+            <button id="copyExpensesToClipboard" class="btn waves-effect waves-light right">
+                <i class="material-icons left">content_copy</i>Copy to Clipboard
+            </button>
+            <!-- <button class="btn waves-effect waves-light nav-button prev" data-prev="add-expense"><i class="material-icons left">navigate_before</i>Previous</button>
+            <button class="btn waves-effect waves-light nav-button next" data-next="debts"><i class="material-icons left">navigate_next</i>Next</button> -->
+        </div>
+        <div id="debts" class="col s12">
+            <div class="row"><h2>Debts</h2></div>
+            <div class="table-responsive">
+                <table id="debtsListID" class="striped">
+                    <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Amount</th>
+                        <th>Currency</th>
+                        <th>Settle</th>
+                    </tr>
+                    </thead>
+                    <tbody id="debtsList"></tbody>
+                </table>
+            </div>
+            <div class="row"><h2>Summary</h2></div>
+            <div class="table-responsive">
+                <table id="summaryTable" class="striped">
+                    <thead>
+                    <tr>
+                        <th>Member</th>
+                        <th>Expense Made</th>
+                        <th>To Receive</th>
+                        <th>Total Debt</th>
+                    </tr>
+                    </thead>
+                    <tbody id="summaryTableBody"></tbody>
+                </table>
+            </div>
+            <!-- <button class="btn waves-effect waves-light nav-button prev" data-prev="expenses"><i class="material-icons left">navigate_before</i>Previous</button>
+            <button class="btn waves-effect waves-light nav-button next" data-next="history-tab"><i class="material-icons left">navigate_next</i>Next</button> -->
+            <button id="copyToClipboard" class="btn waves-effect waves-light right">
+                <i class="material-icons left">content_copy</i>Copy to Clipboard
+            </button>
+
+        </div>
+        <div id="charts" class="col s12">
+            <div class="row">
+                <h2>Charts</h2>
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <canvas id="expenseMadeChart" class="responsive-chart"></canvas>
+                </div>
+                <div class="col s12 m6">
+                    <canvas id="toReceiveChart" class="responsive-chart"></canvas>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <canvas id="totalDebtChart" class="responsive-chart"></canvas>
+                </div>
+                <div class="col s12 m6">
+                    <canvas id="borrowerLenderChart" class="responsive-chart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        <div id="history-tab" class="col s12">
+            <input type="hidden" id="groupId" value="">
+            <div><h3>History</h3></div>
+            <div class="table-responsive">
+                <table id="historyTable" class="striped">
+                    <thead>
+                    <tr>
+                        <th>Group Name</th>
+                        <th>Total Members</th>
+                        <th>Total Expenses</th>
+                        <th>Total Debts</th>
+                        <th>Last Updated</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="historyTableBody">
+                    <!-- Rows will be dynamically populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <button id="openSidenavBtn" class="btn waves-effect waves-light" title="Open Menu">
+            <i class="material-icons">menu</i>
+        </button>
+        <button id="saveGroupBtn" class="btn waves-effect waves-light" title="Save Group">
+            <i class="material-icons">save</i>
+        </button>
+        <button id="prevTabBtn" class="btn waves-effect waves-light" title="Previous Tab">
+            <i class="material-icons">navigate_before</i>
+        </button>
+        <button id="nextTabBtn" class="btn waves-effect waves-light" title="Next Tab">
+            <i class="material-icons">navigate_next</i>
+        </button>
+    </div>
+
+<!-- Modal Structure -->
+<div id="customAlert" class="modal">
+    <div class="modal-content">
+        <h4 id="modalTitle">Alert</h4>
+        <p id="modalMessage"></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="modalConfirm" class="modal-close waves-effect waves-green btn-flat">Confirm</a>
+        <a href="#" id="modalClose" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+<div id="customConfirmAlert" class="modal">
+    <div class="modal-content">
+        <h4 id="modalConfirmTitle"></h4>
+        <p id="modalConfirmMessage"></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="modalConfirmYes" class="modal-close waves-effect waves-green btn-flat">Yes</a>
+        <a href="#!" id="modalConfirmNo" class="modal-close waves-effect waves-red btn-flat">No</a>
+        <a href="#!" id="modalConfirmCancel" class="modal-close waves-effect waves-grey btn-flat">Cancel</a>
+    </div>
+</div>
+<div id="groupNameModal" class="modal">
+    <div class="modal-content">
+        <div class="row"><h4>Set Group Name</h4></div>
+        <form id="groupNameFormModal">
+            <div class="row">
+                <div class="input-field">
+                    <i class="material-icons prefix">groups</i>
+                    <input type="text" id="groupNameInputModal" required>
+                    <label for="groupNameInputModal">Group Name</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit"><i class="material-icons left">contacts</i>Set Group Name</button>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+<script src="js/materialize.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/npm-chart.js"></script>
+<script src="js/charts.js"></script>
+</body>
+
+</html>
